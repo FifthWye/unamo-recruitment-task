@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f9fbfa;
+}
+
+.App {
+  font-family: 'Roboto', sans-serif;
+}
+
+.App-header {
+  height: 160px;
+  padding-right: 15.5vw;
+  padding-left: 15.5vw;
+  color: white;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.App-header .unamo-logo {
+  height: 50px;
+  top:50%;
+  margin-top:-32px;
+  position: relative;
+}
+
+.App-header .unamo-link {
+  color: #08ab6b;
+  font-size: 18px;
+  top:50%;
+  margin-top:-10px;
+  position: relative;
+  float: right;
+  
+}
+
+.App-body {
+  height: 100%;
+  padding-right: 15.5vw;
+  padding-left: 15.5vw;
+}
+
+.App-body .container {
+  width: 100%;
+  height: 700px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.16),0 1px 5px 0 rgba(0,0,0,0.12)!important;
+}
+
+.App-body .container-header{
+  height: 80px;
+  padding-left: 40px; 
+  padding-right:40px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.container-header .btn-Add {
+  background-color: white;
+  border: 1px solid #04ab6b;
+  color: #04ab6b;
+  padding: 16px 26px;
+  font-size: 16px; 
+  font-weight: bold;
+  cursor: pointer; 
+  border-radius: 3px;
+}
+
+.container-header .btn-Add:hover {
+  background-color: #04ab6b; 
+  border: 1px solid #04ab6b;
+  color: #fff;
+}
+
+
+@media only screen and (min-width: 0px) and (max-width: 560px) {
+  .App-header .unamo-link {
+    display:none;
+  }
+
+  .App-header .unamo-logo {
+    left: 50%;
+    margin-left:-125px;
+  }
+
+}
