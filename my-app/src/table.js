@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
+import Line from './line.js';
 import styles from './table.css';
 
-
-
-class  Table extends Component {
+class Table extends Component {
 
     constructor(props) {
         super();
@@ -11,10 +10,13 @@ class  Table extends Component {
             users: [],
             isLoaded: false,
         }
+        this.deleteLine = this.deleteLine.bind(this);
     }
 
-    deleteUser(){
-
+    deleteLine(i) {
+        var usersArr = this.state.users;
+        usersArr.splice(i, 1);
+        this.setState({ users: usersArr });
     }
 
     componentDidMount() {
@@ -34,34 +36,37 @@ class  Table extends Component {
         var { isLoaded, users } = this.state;
 
 
-        if(!isLoaded){
-                return <div>Loading...</div>;
-        } else{
+        if (!isLoaded) {
+            return (
+                <div className="loader" id="loader">
+                    <div className="l-container">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>);
+        } else {
 
-        return (
-            <table>
-                <thead>
-                <tr>
-                    <th>LP</th>
-                    <th>USER</th>
-                    <th>E-MAIL</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                {users.map(user => (
-                <tr key={user.id} index={user.id}>
-                    <td><div className="id">{user.id}</div></td>
-                    <td>{user.username}</td>
-                    <td>{user.email}</td>
-                    <td><button onClick={this.deleteUser} className="btn-Delete">&times;</button></td>
-                </tr>
-                ))}
-                </tbody>
-            </table>
+            return (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>LP</th>
+                            <th>USER</th>
+                            <th>E-MAIL</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map((user, index) => (
+                            <Line key={index} index={index} user={user} deleteLine={this.deleteLine} />
+                        ))}
+                    </tbody>
+                </table>
 
-        );
-    }
+            );
+        }
     }
 }
 
