@@ -17,7 +17,7 @@ class App extends Component {
         <div className="App-body">
           <div className="container">
             <div className="container-header">
-              <button className="btn-Add"><i class="fas fa-plus-circle fa-lg"></i>  Add user</button>
+              <button className="btn-Add"><i className="fas fa-plus-circle fa-lg"></i>  Add user</button>
             </div>
             <div className="container-body">
               <Table />
