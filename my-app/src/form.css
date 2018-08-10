@@ -1,0 +1,64 @@
+.inputField{
+    height:28px;
+    width: 320px;
+    border-radius: 3px;
+    border: 1px solid #d4d8da;
+    margin-left:10px;
+    padding: 10px;
+}
+
+.inputField::placeholder { 
+    color: #d4d8da;
+    opacity: 1; /* Firefox */
+}
+
+.inputField::-ms-input-placeholder {
+    /* Edge/Internet Explorer 10-11 */
+    color: #d4d8da;
+    opacity: 1;
+}
+
+/* .inputFieldErr{
+    border: 1px solid rgb(255, 141, 141);
+    height:28px;
+    width: 320px;
+    border-radius: 3px;
+    margin-left:10px;
+    padding: 10px;
+}
+
+.inputFieldErr:focus {outline:0;} */
+
+.inputField:focus {outline:0;}
+
+#btn-Submit {
+    background-color: #04ab6b;
+    border:none;
+    color: #fff;
+    padding: 16px 50px;
+    font-size: 16px; 
+    font-weight: bold;
+    cursor: pointer; 
+    border-radius: 3px;
+    margin-left:10px;
+  }
+
+#btn-Submit:focus {outline:0;}
+
+#btn-Submit:disabled{
+    opacity: 0.5;
+    cursor:not-allowed;
+}
+
+#btn-Reset {
+    color:#f56565;
+    font-size: 16px; 
+    margin-left: 30px;
+    border: none;
+    text-decoration: underline;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    cursor: pointer; 
+    
+
+}

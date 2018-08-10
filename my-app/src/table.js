@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Line from './line.js';
-import styles from './table.css';
+import './table.css';
 
 class Table extends Component {
 
@@ -11,6 +11,18 @@ class Table extends Component {
             isLoaded: false,
         }
         this.deleteLine = this.deleteLine.bind(this);
+    }
+
+    addUser(name, email) {
+        var userData = this.props.addUser();
+        var usersArr = this.state.users;
+        if (!(usersArr.length === 10)) {
+            var newUser = usersArr[usersArr.length];
+            newUser.username = userData[0];
+            newUser.email = userData[1];
+
+            usersArr.push(newUser);
+        }
     }
 
     deleteLine(i) {
