@@ -18,6 +18,10 @@
     opacity: 1;
 }
 
+#hidden {
+    display: none;
+}
+
 /* .inputFieldErr{
     border: 1px solid rgb(255, 141, 141);
     height:28px;
@@ -52,13 +56,13 @@
 
 #btn-Reset {
     color:#f56565;
-    font-size: 16px; 
+    font-size: 14px; 
     margin-left: 30px;
     border: none;
     text-decoration: underline;
     background-color: Transparent;
     background-repeat:no-repeat;
     cursor: pointer; 
-    
+    font-weight: 600;
 
 }

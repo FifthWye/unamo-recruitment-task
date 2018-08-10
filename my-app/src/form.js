@@ -18,6 +18,7 @@ class Form extends Component {
     defaultState = {
         username: '',
         email: '',
+        showReset : false,
         // touched: {
         //     username: false,
         //     email: false,
@@ -32,10 +33,17 @@ class Form extends Component {
 
     handleUsernameChange = (evt) => {
         this.setState({ username: evt.target.value });
+        if(!(this.state.username.trim() == "")){
+            this.setState({showReset: true})
+        }
+
     }
 
     handleEmailChange = (evt) => {
         this.setState({ email: evt.target.value });
+        if(!(this.state.username.trim() == "")){
+            this.setState({showReset: true})
+        }
     }
 
     // handleSubmit(event) {
@@ -72,7 +80,7 @@ class Form extends Component {
 
                 <button disabled={btnDisabled} type='button' id="btn-Submit">Submit</button>
 
-                <button onClick={this.resetFields} type='button' id="btn-Reset">Reset fields</button>
+                <button onClick={this.resetFields} type='button' id={this.state.showReset ? 'btn-Reset' : 'hidden'}>Reset fields</button>
             </form>
 
         );
