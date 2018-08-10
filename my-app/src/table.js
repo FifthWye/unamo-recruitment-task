@@ -10,7 +10,14 @@ class Table extends Component {
             users: [],
             isLoaded: false,
         }
-        this.deleteLine = this.deleteLine.bind(this);
+        this.deleteUser = this.deleteUser.bind(this);
+    }
+
+    userLimit(){
+        if(this.users.length === 10){
+            return true;
+        }
+        return false;
     }
 
     addUser(name, email) {
@@ -25,7 +32,7 @@ class Table extends Component {
         }
     }
 
-    deleteLine(i) {
+    deleteUser(i) {
         var usersArr = this.state.users;
         usersArr.splice(i, 1);
         this.setState({ users: usersArr });
@@ -72,7 +79,7 @@ class Table extends Component {
                     </thead>
                     <tbody>
                         {users.map((user, index) => (
-                            <Line key={index} index={index} user={user} deleteLine={this.deleteLine} />
+                            <Line key={index} index={index} user={user} deleteUser={this.deleteUser} />
                         ))}
                     </tbody>
                 </table>

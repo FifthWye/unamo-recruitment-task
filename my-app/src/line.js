@@ -7,13 +7,13 @@ class Line extends Component {
     }
 
     remove() {
-        this.props.deleteLine(this.props.index);
+        this.props.deleteUser(this.props.index);
     }
 
     render() {
         return (
         <tr >
-            <td><div className="id">{this.props.user.id}</div></td>
+            <td><div className="id">{this.props.index+1}</div></td>
             <td>{this.props.user.username}</td>
             <td>{this.props.user.email}</td>
             <td><button onClick={this.remove} className="btn-Delete">&times;</button></td>

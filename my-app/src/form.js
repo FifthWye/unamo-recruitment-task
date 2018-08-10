@@ -33,7 +33,7 @@ class Form extends Component {
 
     handleUsernameChange = (evt) => {
         this.setState({ username: evt.target.value });
-        if(!(this.state.username.trim() == "")){
+        if(!(this.state.username.trim() === "")){
             this.setState({showReset: true})
         }
 
@@ -41,7 +41,7 @@ class Form extends Component {
 
     handleEmailChange = (evt) => {
         this.setState({ email: evt.target.value });
-        if(!(this.state.username.trim() == "")){
+        if(!(this.state.username.trim() === "")){
             this.setState({showReset: true})
         }
     }
