@@ -68,13 +68,24 @@ body {
   font-weight: bold;
   cursor: pointer; 
   border-radius: 3px;
-  
 }
 
 .container-header .btn-Add:hover {
   background-color: #04ab6b; 
   border: 1px solid #04ab6b;
   color: #fff;
+}
+
+.container-header .btn-Add:disabled {
+  background-color: white;
+  border: 1px solid #04ab6b;
+  color: #04ab6b;
+  padding: 16px 26px;
+  font-size: 16px; 
+  font-weight: bold;
+  cursor: pointer; 
+  border-radius: 3px;
+  cursor:not-allowed;
 }
 
 .container-header .btn-Add:focus {outline:0;}
@@ -85,8 +96,13 @@ body {
   margin-left: 40px
 }
 
-.message i {
-  color:red;
+.success i {
+  color:#0fad6e;
+  padding-right:10px;
+}
+
+.limit i {
+  color:#e12636;
   padding-right:10px;
 }
 

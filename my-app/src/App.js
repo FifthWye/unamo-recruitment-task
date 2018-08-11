@@ -6,22 +6,68 @@ import Form from './form.js'
 class App extends Component {
 
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       showForm: false,
-      showLimitM : false
+      showLimitM: false,
+      showAddedM: false,
     }
-    this.table = React.createRef();
-    this.addUser = this.addUser.bind(this);
     this.showForm = this.showForm.bind(this);
+    this.showLimitM = this.showLimitM.bind(this);
+    this.newUser = this.newUser.bind(this);
+    this.child = React.createRef();
   }
 
   showForm() {
-    this.setState({ showForm: true })
+    this.setState({
+      showForm: true,
+      showAddedM: false
+    })
   }
 
-  addUser() {
-    this.refs.form.newUserValues();
+  newUser(userData) { // get values from form and sending it to table + show message if user was added
+    var newUser = userData;
+    if (this.child.current.addUser(newUser)) {
+      this.setState({
+        showForm: false,
+        showAddedM: true
+      })
+
+      const data = {
+        'username': userData[0],
+        'email': userData[1]
+    }
+    
+      fetch('https://jsonplaceholder.typicode.com/users', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(json => console.log(json))
+    } else {
+      this.setState({
+        showForm: false
+      })
+    }
+  }
+
+  showLimitM(isMax) { //if there is a maximum of users show message
+    if (isMax) {
+      if (this.state.showLimitM === false) {
+        this.setState({
+          showLimitM: true
+        })
+      }
+    } else {
+      if (this.state.showLimitM === true) {
+        this.setState({
+          showLimitM: false
+        })
+      }
+    }
   }
 
   render() {
@@ -39,14 +85,18 @@ class App extends Component {
           <div className="container">
             <div className="container-header">
               {this.state.showForm ?
-                <Form ref="form" />
+                <Form newUser={this.newUser} />
                 :
-                <button onClick={this.showForm} className="btn-Add"><i className="fas fa-plus-circle fa-lg"></i>  Add user</button>
+                <button disabled={this.state.showLimitM} onClick={this.showForm} className="btn-Add"><i className="fas fa-plus-circle fa-lg"></i>  Add user</button>
               }
-              <span className={this.state.showLimitM ? 'message' : 'hidden'}><i className="fas fa-exclamation-circle fa-lg"></i>You can't add new user because of a limit.</span> {/* I know could take the same exclamation mark as in psd, but isn't it better to have all icons in svg? + There is exact the same inon in font awsome PRO library ( not adv ) */}
+              {this.state.showAddedM && this.state.showLimitM ?
+                <span className={this.state.showLimitM ? 'message limit' : 'hidden'}><i className="fas fa-exclamation-circle fa-check fa-lg"></i>You can't add new user because of a limit.</span> /* I know could take the same exclamation mark as in psd, but isn't it better to have all icons in svg? + There is exact the same inon in font awsome PRO library ( not adv ) */
+                :
+                <span className={this.state.showAddedM ? 'message success' : 'hidden'}><i className="fas fa-check fa-lg"></i>You have successfully added an user.</span>
+              }
             </div>
             <div className="container-body">
-              <Table ref={this.table} addUser={this.addUser} />
+              <Table ref={this.child} showLimitM={this.showLimitM} />
             </div>
             <div className="container-footer">
             </div>
